@@ -93,3 +93,22 @@ const gameBoard = (() => {
       checkForDraw
     }
   })()
+
+  const createPlayer = (name, mark) => {
+    return {
+      name,
+      mark
+    }
+  }
+  
+  const gameController = () => {
+    let currentPlayer
+    let players = []
+    let PlayerMark
+    let playerScore
+    let computerScore
+    const computerName = 'Odin'
+  
+    const swapTurns = () => {
+      currentPlayer = currentPlayer === players[0] ? players[1] : players[0]
+    }
