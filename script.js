@@ -202,3 +202,75 @@ const displayController = (() => {
     computerScoreTextElement.textContent = game.getComputerScore()
   }
 
+  const render = () => {
+    let board = gameBoard.getBoard()
+    cellElements.forEach((cell, index) => {
+      if (board[index] === 'x') {
+        cell.classList.add('x')
+      } else if (board[index] === 'o') {
+        cell.classList.add('circle')
+      } else {
+        cell.textContent = board[index]
+        cell.classList.remove('circle')
+        cell.classList.remove('x')
+      }
+    })
+  }
+
+  const setBoardHoverState = className => {
+    boardElement.classList.remove('x')
+    boardElement.classList.remove('circle')
+    boardElement.classList.add(className)
+  }
+
+  const startNewGame = e => {
+    e.preventDefault()
+    const playerName = document.querySelector('input[name="name"]').value
+    const marks = document.querySelectorAll('input[name="mark"]')
+    let playerMark
+    let computerMark
+
+    if (!playerName) {
+      playerNameTextElement.textContent = 'Player name'
+    } else {
+      playerNameTextElement.textContent = playerName
+    }
+
+    marks.forEach(mark => {
+      if (!mark.checked) {
+        computerMark = mark.value
+      } else {
+        playerMark = mark.value
+      }
+    })
+
+    if (playerMark === 'o') {
+      setBoardHoverState('circle')
+    } else {
+      setBoardHoverState('x')
+    }
+
+    game.startGame(playerName, playerMark, computerMark)
+
+    const handleClick = e => {
+      const cell = e.target.id
+      if (gameBoard.checkForDraw()) return
+      if (gameBoard.checkForWin()) return
+      game.playRound(cell)
+    }
+
+    cellElements.forEach(cell => {
+      cell.addEventListener('click', handleClick)
+    })
+
+    newRoundButton.addEventListener('click', game.newRound)
+  }
+
+  submitButton.addEventListener('click', startNewGame)
+
+  return {
+    render,
+    startNewGame,
+    updateScores
+  }
+})()
