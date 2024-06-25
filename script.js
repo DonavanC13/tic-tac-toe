@@ -23,3 +23,21 @@ const gameBoard = (() => {
         return false
       }
     }
+
+    const getAvailableMoves = () => {
+        const moves = []
+        board.forEach((cell, index) => {
+          if (!cell) moves.push(index)
+        })
+        return moves
+      }
+    
+      const resetBoard = () => {
+        board = ['', '', '', '', '', '', '', '', '']
+      }
+    
+      const getBoard = () => board
+    
+      const isFull = () => {
+        return board.every(cell => cell)
+      }
