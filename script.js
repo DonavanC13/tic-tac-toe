@@ -173,3 +173,32 @@ const gameBoard = (() => {
       }
     }
   }
+
+  const getPlayerScore = () => playerScore
+  const getComputerScore = () => computerScore
+
+  return {
+    getCurrentPlayer,
+    playRound,
+    startGame,
+    getComputerScore,
+    getPlayerScore,
+    newRound
+  }
+}
+
+const displayController = (() => {
+  const cellElements = document.querySelectorAll('[data-cell]')
+  const boardElement = document.querySelector('#board')
+  const submitButton = document.querySelector('[data-start-btn]')
+  const newRoundButton = document.querySelector('[data-round-btn]')
+  const playerNameTextElement = document.querySelector('#player-name')
+  const playerScoreTextElement = document.querySelector('#player-score')
+  const computerScoreTextElement = document.querySelector('#computer-score')
+  const game = gameController()
+
+  const updateScores = () => {
+    playerScoreTextElement.textContent = game.getPlayerScore()
+    computerScoreTextElement.textContent = game.getComputerScore()
+  }
+
