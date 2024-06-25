@@ -112,3 +112,29 @@ const gameBoard = (() => {
     const swapTurns = () => {
       currentPlayer = currentPlayer === players[0] ? players[1] : players[0]
     }
+
+    const getCurrentPlayer = () => currentPlayer
+
+  const computerMove = () => {
+    const availableMoves = gameBoard.getAvailableMoves()
+    const randomMove = Math.floor(Math.random() * availableMoves.length)
+    return availableMoves[randomMove]
+  }
+
+  const newRound = () => {
+    gameBoard.resetBoard()
+    displayController.render()
+    currentPlayer = players[0]
+  }
+
+  const startGame = (playerName, playerMark, computerMark) => {
+    playerScore = 0
+    computerScore = 0
+    PlayerMark = playerMark
+    players = [
+      createPlayer(playerName, playerMark),
+      createPlayer(computerName, computerMark)
+    ]
+    newRound()
+    displayController.updateScores()
+  }
