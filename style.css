@@ -38,3 +38,25 @@
     align-items: center;
     flex-wrap: wrap;
   }
+
+  .grid {
+    display: grid;
+  }
+  
+  .border-10 {
+    border-radius: 10px;
+  }
+  
+  .display-data {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 40px);
+    gap: 0 1rem;
+    padding: 1rem;
+    margin-block: 2rem 5rem;
+  }
+  
+  .round-btn {
+    grid-column: span 2;
+  }
