@@ -64,3 +64,32 @@ const gameBoard = (() => {
         if (board[2] === board[5] && board[2] === board[8] && board[2]) {
           return { winner: board[2], direction: 'V', column: 3 }
         }
+
+        //Checking Diagonal Wins
+    if (board[0] === board[4] && board[0] === board[8] && board[0]) {
+        return { winner: board[0], direction: 'D', diagonal: 'main' }
+      }
+      if (board[2] === board[4] && board[2] === board[6] && board[2]) {
+        return { winner: board[2], direction: 'D', diagonal: 'counter' }
+      }
+  
+      return false
+    }
+  
+    const checkForDraw = () => {
+      if (isFull()) {
+        return { winner: 'draw' }
+      }
+      return false
+    }
+  
+    return {
+      getBoard,
+      markCell,
+      resetBoard,
+      printFormattedBoard,
+      getAvailableMoves,
+      checkForWin,
+      checkForDraw
+    }
+  })()
