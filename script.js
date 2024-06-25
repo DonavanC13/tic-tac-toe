@@ -41,3 +41,26 @@ const gameBoard = (() => {
       const isFull = () => {
         return board.every(cell => cell)
       }
+
+      const checkForWin = () => {
+        //Checking Horizontal Wins
+        if (board[0] === board[1] && board[0] === board[2] && board[0]) {
+          return { winner: board[0], direction: 'H', row: 1 }
+        }
+        if (board[3] === board[4] && board[3] === board[5] && board[3]) {
+          return { winner: board[3], direction: 'H', row: 2 }
+        }
+        if (board[6] === board[7] && board[6] === board[8] && board[6]) {
+          return { winner: board[6], direction: 'H', row: 3 }
+        }
+    
+        //Checking Vertical Wins
+        if (board[0] === board[3] && board[0] === board[6] && board[0]) {
+          return { winner: board[0], direction: 'V', column: 1 }
+        }
+        if (board[1] === board[4] && board[1] === board[7] && board[1]) {
+          return { winner: board[1], direction: 'V', column: 2 }
+        }
+        if (board[2] === board[5] && board[2] === board[8] && board[2]) {
+          return { winner: board[2], direction: 'V', column: 3 }
+        }
