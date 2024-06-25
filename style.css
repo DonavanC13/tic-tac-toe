@@ -60,3 +60,28 @@
   .round-btn {
     grid-column: span 2;
   }
+  .choose-mark {
+    margin-block: 2rem 5rem;
+    margin-inline: auto;
+    padding: 1rem 2rem;
+    border: 1px solid var(--clr-black);
+    width: fit-content;
+  
+    > input[type="text"] {
+      height: 1.5rem;
+      padding: 0.5rem;
+      border: 1px solid var(--clr-grey);
+    }
+  
+    input[type="radio"] {
+      display: none;
+    }
+  }
+  
+  .label-mark {
+    display: inline-block;
+    margin-block: 0.5rem;
+    background-color: var(--clr-black);
+    color: var(--clr-white);
+    padding: 0.5rem 3rem;
+  }
