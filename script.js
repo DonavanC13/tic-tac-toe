@@ -138,3 +138,38 @@ const gameBoard = (() => {
     newRound()
     displayController.updateScores()
   }
+
+  const playRound = index => {
+    let cellIndex
+    let move
+    let endRound = false
+    currentPlayer = players[0]
+    while (!endRound) {
+      if (gameBoard.checkForWin()) {
+        if (gameBoard.checkForWin().winner === PlayerMark) {
+          playerScore += 1
+          displayController.updateScores()
+        } else {
+          computerScore += 1
+          displayController.updateScores()
+        }
+        endRound = true
+        return
+      } else if (gameBoard.checkForDraw()) {
+        endRound = true
+        return
+      } else {
+        if (currentPlayer.name === computerName) {
+          cellIndex = computerMove()
+        } else {
+          cellIndex = index
+        }
+        move = gameBoard.markCell(cellIndex, currentPlayer.mark)
+        if (!move) return
+        else {
+          swapTurns()
+          displayController.render()
+        }
+      }
+    }
+  }
