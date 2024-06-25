@@ -85,3 +85,52 @@
     color: var(--clr-white);
     padding: 0.5rem 3rem;
   }
+
+  .label-mark:hover,
+.label-mark:focus {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.player-score,
+.computer-score {
+  color: var(--clr-red);
+}
+
+.btn {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.submit-btn {
+  padding: 0.5rem;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
+  background-color: var(--clr-black);
+  color: var(--clr-white);
+}
+
+.board {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  place-content: center;
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 1px solid var(--clr-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
